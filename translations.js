@@ -8,11 +8,11 @@ const TRANSLATIONS = {
   // General UI Elements
   ui: {
     title: 'Patch Guide',
-    tagline: 'Clean your apps from',
+    tagline: 'Free your apps from',
     wordsToRotate: ['ads', 'tracking', 'bloatware', 'annoyances', 'sponsors'],
     downloadNowBtn: 'Download Patched Apps',
     chooseAppHeader: 'Choose an Application',
-    chooseAppSub: 'Select the app you want to install. All apps are pre-patched, ad-free, and privacy-friendly.',
+    chooseAppSub: 'Select the app you want to install. All apps are ready, ad-free, and privacy-friendly.',
 
     // Architectures
     archArm64: 'ARM64 (Modern phones)',
@@ -22,7 +22,7 @@ const TRANSLATIONS = {
     // Buttons
     downloadGmsCoreBtn: 'Download GmsCore',
     downloadAppBtn: 'Download App',
-    huaweiAlertTitle: 'Huawei Device Alert',
+    huaweiAlertTitle: 'Huawei Device Alert!',
     huaweiAlertText: 'If you are using a Huawei/Honor device without Google Services, you must tap the special "Huawei" button on the microG sign-in screen, rather than the regular sign-in.',
 
     // General Tips section
@@ -50,7 +50,7 @@ const TRANSLATIONS = {
   // Supported Applications Configuration
   apps: {
     youtube: {
-      name: 'YouTube ReVanced',
+      name: 'YouTube',
       description: 'The ultimate YouTube experience. Ad-free, background playback, sponsor block, return dislikes, and full customization.',
       iconColor: '#ff0000',
       requiresGmsCore: true,
@@ -97,8 +97,8 @@ const TRANSLATIONS = {
           ]
         },
         {
-          title: 'Step 5: Download YouTube ReVanced',
-          description: 'Click the button below to download the pre-patched YouTube ReVanced application file.',
+          title: 'Step 5: Download YouTube',
+          description: 'Click the button below to download the YouTube application.',
           isAppDownloadStep: true,
           screenshotText: 'Downloading YouTube ReVanced file...',
           screenshots: [
@@ -106,8 +106,8 @@ const TRANSLATIONS = {
           ]
         },
         {
-          title: 'Step 6: Install YouTube ReVanced',
-          description: 'Open the downloaded YouTube ReVanced APK file and tap "Install". Since you already enabled permissions in Step 2, the app will install instantly.',
+          title: 'Step 6: Install YouTube',
+          description: 'Open the downloaded YouTube file and tap "Install". Since you already enabled permissions in Step 2, the app will install instantly.',
           screenshotText: 'YouTube ReVanced installation screen',
           screenshots: [
             'assets/screenshots/ytopen.png',
@@ -115,7 +115,7 @@ const TRANSLATIONS = {
           ]
         },
         {
-          title: 'Step 7: Log In & Sync (Huawei Warning)',
+          title: 'Step 7: Log In & Sync',
           description: 'Launch the YouTube app and tap "Sign in" -> "Add Google Account". Log in with your standard credentials to sync your subscriptions. NOTE: If you are using a Huawei device, make sure to tap the "Huawei" button on the sign-in screen.',
           screenshotText: 'Account Login & Huawei button guide',
           screenshots: [
