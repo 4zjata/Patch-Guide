@@ -276,6 +276,46 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }
 
+      // Dynamic screenshot mockup slider or placeholder SVG
+      const screenshots = Array.isArray(step.screenshots)
+        ? step.screenshots
+        : (step.screenshots ? [step.screenshots] : []);
+
+      let mockupHtml = '';
+      if (screenshots.length > 0) {
+        mockupHtml = `
+          <div class="mockup-slider" data-current-index="0">
+            <div class="mockup-slides">
+              ${screenshots.map(src => `
+                <div class="mockup-slide">
+                  <img src="${src}" alt="Screenshot" class="mockup-img" loading="lazy" />
+                </div>
+              `).join('')}
+            </div>
+            ${screenshots.length > 1 ? `
+              <button class="slider-arrow slider-arrow-left" aria-label="Previous image">
+                <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+              </button>
+              <button class="slider-arrow slider-arrow-right" aria-label="Next image">
+                <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+              </button>
+              <div class="slider-dots">
+                ${screenshots.map((_, i) => `
+                  <span class="slider-dot ${i === 0 ? 'active' : ''}" data-slide-index="${i}"></span>
+                `).join('')}
+              </div>
+            ` : ''}
+          </div>
+        `;
+      } else {
+        mockupHtml = `
+          <div class="mockup-placeholder">
+            <svg class="mockup-placeholder-icon" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0-2-.9-2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+            <div class="mockup-placeholder-text">${step.screenshotText || 'Installation Screen'}</div>
+          </div>
+        `;
+      }
+
       html += `
         <div class="step-card fade-in" style="animation-delay: ${index * 0.1}s">
           <div class="step-badge-col">
@@ -287,13 +327,10 @@ document.addEventListener('DOMContentLoaded', () => {
             ${actionButtonsHtml}
             ${additionalInfoHtml}
             
-            <!-- Placeholder screen mockup for screenshots -->
+            <!-- Sleek Smartphone Bezel Mockup -->
             <div class="mockup-container">
               <div class="mockup-notch"></div>
-              <div class="mockup-placeholder">
-                <svg class="mockup-placeholder-icon" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0-2-.9-2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-                <div class="mockup-placeholder-text">${step.screenshotText || 'Installation Screen'}</div>
-              </div>
+              ${mockupHtml}
             </div>
           </div>
         </div>
@@ -302,7 +339,84 @@ document.addEventListener('DOMContentLoaded', () => {
 
     stepsContainer.innerHTML = html;
     initCardLighting(); // Re-apply lighting coordinates to dynamically created elements
+    initSliders(); // Initialize the dynamic screenshot carousels/sliders
   }
+
+  // Initialize interactive sliders with touch support and pill dots
+  function initSliders() {
+    const sliders = document.querySelectorAll('.mockup-slider');
+    sliders.forEach(slider => {
+      const slidesContainer = slider.querySelector('.mockup-slides');
+      const slides = slider.querySelectorAll('.mockup-slide');
+      const dots = slider.querySelectorAll('.slider-dot');
+      const arrowLeft = slider.querySelector('.slider-arrow-left');
+      const arrowRight = slider.querySelector('.slider-arrow-right');
+      
+      let currentIndex = 0;
+      const totalSlides = slides.length;
+      
+      function updateSlider(index) {
+        currentIndex = (index + totalSlides) % totalSlides;
+        
+        // Horizontal slide translation
+        slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // Update dots state
+        dots.forEach((dot, idx) => {
+          if (idx === currentIndex) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+        
+        slider.setAttribute('data-current-index', currentIndex);
+      }
+      
+      if (arrowLeft) {
+        arrowLeft.addEventListener('click', (e) => {
+          e.stopPropagation();
+          updateSlider(currentIndex - 1);
+        });
+      }
+      
+      if (arrowRight) {
+        arrowRight.addEventListener('click', (e) => {
+          e.stopPropagation();
+          updateSlider(currentIndex + 1);
+        });
+      }
+      
+      dots.forEach(dot => {
+        dot.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const targetIndex = parseInt(dot.getAttribute('data-slide-index'), 10);
+          updateSlider(targetIndex);
+        });
+      });
+      
+      // Swipe gestures for high-quality mobile UX
+      let touchStartX = 0;
+      let touchEndX = 0;
+      
+      slider.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      
+      slider.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 50) { // 50px threshold
+          if (diff > 0) {
+            updateSlider(currentIndex + 1); // Swipe left -> Next
+          } else {
+            updateSlider(currentIndex - 1); // Swipe right -> Prev
+          }
+        }
+      }, { passive: true });
+    });
+  }
+
 
   // FAQ Accordion Control
   function initAccordion() {

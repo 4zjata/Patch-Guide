@@ -64,38 +64,64 @@ const TRANSLATIONS = {
           title: 'Step 1: Download GmsCore',
           description: 'This is a helper that enables you to sign in with your Google account.',
           isGmsCoreStep: true,
-          screenshotText: 'Downloading GmsCore file...'
+          screenshotText: 'Downloading GmsCore file...',
+          screenshots: [
+            'assets/screenshots/microdl.png'
+          ]
         },
         {
           title: 'Step 2: Enable Unknown Sources',
           description: 'When you tap to open the downloaded GmsCore file, your browser will block it and show a security prompt. Tap "Settings" on that prompt, and switch on the toggle to allow installations from your browser.',
-          screenshotText: 'Allow from this source toggle screen'
+          screenshotText: 'Allow from this source toggle screen',
+          screenshots: [
+            'assets/screenshots/microsettings.png'
+          ]
         },
         {
           title: 'Step 3: Bypass Google Play Protect Alert',
           description: 'Your phone might show a Play Protect popup warning you about an "Unknown developer" or "Unsafe app". This is normal for patched files. Tap "More details" or "Details" on the popup, then select "Install anyway" to proceed.',
-          screenshotText: 'Play Protect -> More details -> Install anyway'
+          screenshotText: 'Play Protect -> More details -> Install anyway',
+          screenshots: [
+            'assets/screenshots/microunknown.png',
+            'assets/screenshots/microdetail.png',
+            'assets/screenshots/microanyway.png'
+          ]
         },
         {
           title: 'Step 4: Install GmsCore',
           description: 'Now, tap "Install" on the screen to complete the setup. Once installed, GmsCore runs silently in the background — you do not need to open it.',
-          screenshotText: 'GmsCore installation success'
+          screenshotText: 'GmsCore installation success',
+          screenshots: [
+            'assets/screenshots/microinstall.png',
+            'assets/screenshots/microopen.png'
+          ]
         },
         {
           title: 'Step 5: Download YouTube ReVanced',
           description: 'Click the button below to download the pre-patched YouTube ReVanced application file.',
           isAppDownloadStep: true,
-          screenshotText: 'Downloading YouTube ReVanced file...'
+          screenshotText: 'Downloading YouTube ReVanced file...',
+          screenshots: [
+            'assets/screenshots/ytdownload.png'
+          ]
         },
         {
           title: 'Step 6: Install YouTube ReVanced',
           description: 'Open the downloaded YouTube ReVanced APK file and tap "Install". Since you already enabled permissions in Step 2, the app will install instantly.',
-          screenshotText: 'YouTube ReVanced installation screen'
+          screenshotText: 'YouTube ReVanced installation screen',
+          screenshots: [
+            'assets/screenshots/ytcontinue.png',
+            'assets/screenshots/ytinstall.png'
+          ]
         },
         {
           title: 'Step 7: Log In & Sync (Huawei Warning)',
           description: 'Launch the YouTube app and tap "Sign in" -> "Add Google Account". Log in with your standard credentials to sync your subscriptions. NOTE: If you are using a Huawei device, make sure to tap the "Huawei" button on the sign-in screen.',
-          screenshotText: 'Account Login & Huawei button guide'
+          screenshotText: 'Account Login & Huawei button guide',
+          screenshots: [
+            'assets/screenshots/ythuawei.png',
+            'assets/screenshots/ytopen.png'
+          ]
         }
       ]
     },
@@ -114,22 +140,37 @@ const TRANSLATIONS = {
           title: 'Step 1: Download GmsCore',
           description: 'his is a helper that enables you to sign in with your Google account.',
           isGmsCoreStep: true,
-          screenshotText: 'Downloading GmsCore file...'
+          screenshotText: 'Downloading GmsCore file...',
+          screenshots: [
+            'assets/screenshots/microdl.png'
+          ]
         },
         {
           title: 'Step 2: Enable Unknown Sources',
           description: 'If installing for the first time, when you open the file, tap "Settings" on the prompt and enable the toggle to allow installs from your browser.',
-          screenshotText: 'Allow from this source toggle screen'
+          screenshotText: 'Allow from this source toggle screen',
+          screenshots: [
+            'assets/screenshots/microsettings.png'
+          ]
         },
         {
           title: 'Step 3: Bypass Google Play Protect Alert',
           description: 'If you see an "Unknown developer" alert, tap "More details" followed by "Install anyway". It is completely safe.',
-          screenshotText: 'Play Protect -> More details -> Install anyway'
+          screenshotText: 'Play Protect -> More details -> Install anyway',
+          screenshots: [
+            'assets/screenshots/microunknown.png',
+            'assets/screenshots/microdetail.png',
+            'assets/screenshots/microanyway.png'
+          ]
         },
         {
           title: 'Step 4: Install GmsCore',
           description: 'Tap "Install" on the screen to finish setup. GmsCore will operate quietly in the background.',
-          screenshotText: 'GmsCore installation success'
+          screenshotText: 'GmsCore installation success',
+          screenshots: [
+            'assets/screenshots/microinstall.png',
+            'assets/screenshots/microopen.png'
+          ]
         },
         {
           title: 'Step 5: Download YouTube Music ReVanced',
