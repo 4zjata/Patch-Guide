@@ -293,12 +293,6 @@ document.addEventListener('DOMContentLoaded', () => {
               `).join('')}
             </div>
             ${screenshots.length > 1 ? `
-              <button class="slider-arrow slider-arrow-left" aria-label="Previous image">
-                <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-              </button>
-              <button class="slider-arrow slider-arrow-right" aria-label="Next image">
-                <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-              </button>
               <div class="slider-dots">
                 ${screenshots.map((_, i) => `
                   <span class="slider-dot ${i === 0 ? 'active' : ''}" data-slide-index="${i}"></span>
@@ -327,10 +321,22 @@ document.addEventListener('DOMContentLoaded', () => {
             ${actionButtonsHtml}
             ${additionalInfoHtml}
             
-            <!-- Sleek Smartphone Bezel Mockup -->
-            <div class="mockup-container">
-              <div class="mockup-notch"></div>
-              ${mockupHtml}
+            <!-- Sleek Smartphone Bezel Mockup Wrapper -->
+            <div class="mockup-wrapper">
+              <div class="mockup-container">
+                <div class="mockup-notch"></div>
+                ${mockupHtml}
+              </div>
+              
+              <!-- Outside navigation arrows -->
+              ${screenshots.length > 1 ? `
+                <button class="slider-arrow slider-arrow-left" aria-label="Previous image">
+                  <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                </button>
+                <button class="slider-arrow slider-arrow-right" aria-label="Next image">
+                  <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                </button>
+              ` : ''}
             </div>
           </div>
         </div>
@@ -349,8 +355,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const slidesContainer = slider.querySelector('.mockup-slides');
       const slides = slider.querySelectorAll('.mockup-slide');
       const dots = slider.querySelectorAll('.slider-dot');
-      const arrowLeft = slider.querySelector('.slider-arrow-left');
-      const arrowRight = slider.querySelector('.slider-arrow-right');
+      
+      // Arrows are now positioned outside the bezel inside the shared wrapper
+      const wrapper = slider.closest('.mockup-wrapper');
+      const arrowLeft = wrapper ? wrapper.querySelector('.slider-arrow-left') : null;
+      const arrowRight = wrapper ? wrapper.querySelector('.slider-arrow-right') : null;
       
       let currentIndex = 0;
       const totalSlides = slides.length;

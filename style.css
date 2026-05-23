@@ -722,10 +722,18 @@ header {
 }
 
 /* Device screen mockup containers (for future screenshots) */
-.mockup-container {
+.mockup-wrapper {
+  position: relative;
   width: 100%;
   max-width: 360px;
   margin: 2.5rem auto 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mockup-container {
+  width: 100%;
   border-radius: 28px; /* Modern curved smartphone corner radius */
   border: 8px solid #1e293b; /* Sleek bezel styling */
   background: #090d16;
@@ -984,11 +992,21 @@ footer {
 }
 
 .slider-arrow-left {
-  left: 0.75rem;
+  left: -0.75rem;
 }
 
 .slider-arrow-right {
-  right: 0.75rem;
+  right: -0.75rem;
+}
+
+@media(min-width: 480px) {
+  .slider-arrow-left {
+    left: -3.5rem;
+  }
+  
+  .slider-arrow-right {
+    right: -3.5rem;
+  }
 }
 
 .slider-arrow svg {
