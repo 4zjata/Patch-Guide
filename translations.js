@@ -232,10 +232,9 @@ const TRANSLATIONS = {
   // Companion Apps
   gmscore: {
     name: 'GmsCore (microG)',
-    version: 'v0.3.13.2.250932',
+    version: 'v6.1.4',
     downloads: {
-      standard: 'https://github.com/ReVanced/GmsCore/releases/download/v0.3.13.2.250932/app.revanced.android.gms-250932004-signed.apk',
-      huawei: 'https://github.com/ReVanced/GmsCore/releases/download/v0.3.13.2.250932/app.revanced.android.gms-250932004-hw-signed.apk'
+      standard: 'https://github.com/MorpheApp/MicroG-RE/releases/download/6.1.4/microg-6.1.4.apk'
     }
   }
 };

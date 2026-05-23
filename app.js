@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const appSelectionSection = document.getElementById('app-selection');
   const appCards = document.querySelectorAll('.app-card');
   const wizardSection = document.getElementById('wizard-section');
-  
+
   // Wizard Rendering Elements
   const wizardAppIcon = document.getElementById('wizard-app-icon');
   const wizardAppTitle = document.getElementById('wizard-app-title');
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAccordion();
 
   // --- EVENTS ---
-  
+
   // Hero button scroll
   if (heroBtn) {
     heroBtn.addEventListener('click', (e) => {
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const descNode = card.querySelector('.app-card-desc');
         if (titleNode) titleNode.textContent = appData.name;
         if (descNode) descNode.textContent = appData.description;
-        
+
         // Brand color hover variables
         card.style.setProperty('--brand-color', `var(--${appKey.replace('_', '-')}-color)`);
         card.style.setProperty('--brand-glow', `rgba(${appKey === 'youtube' ? '239, 68, 68' : appKey === 'youtube_music' ? '244, 63, 94' : appKey === 'tiktok' ? '0, 242, 254' : '236, 72, 153'}, 0.3)`);
@@ -91,10 +91,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const tipsTitle = document.getElementById('tips-title');
     const tipsSub = document.getElementById('tips-sub');
     const accordionContainer = document.getElementById('tips-accordion');
-    
+
     if (tipsTitle) tipsTitle.textContent = TRANSLATIONS.ui.generalTipsTitle;
     if (tipsSub) tipsSub.textContent = TRANSLATIONS.ui.generalTipsSub;
-    
+
     if (accordionContainer) {
       accordionContainer.innerHTML = TRANSLATIONS.ui.tips.map((tip, idx) => `
         <div class="accordion-item" data-index="${idx}">
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     selectedAppKey = appKey;
     const appData = TRANSLATIONS.apps[appKey];
     if (!appData) return;
-    
+
     // Copy main app icon
     const originCardIcon = document.querySelector(`.app-card[data-app="${appKey}"] .app-card-icon`);
     if (wizardAppIcon && originCardIcon) {
@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
       newIcon.style.fill = `var(--${appKey.replace('_', '-')}-color)`;
       newIcon.style.filter = `drop-shadow(0 0 10px var(--${appKey.replace('_', '-')}-color))`;
     }
-    
+
     if (wizardAppTitle) {
       wizardAppTitle.textContent = appData.name;
     }
@@ -229,16 +229,16 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderWizardSteps() {
     if (!selectedAppKey || !stepsContainer) return;
     const appData = TRANSLATIONS.apps[selectedAppKey];
-    
+
     let html = '';
-    
+
     appData.steps.forEach((step, index) => {
       let actionButtonsHtml = '';
 
       if (step.isGmsCoreStep) {
         // Step requires GmsCore download
         const standardLink = TRANSLATIONS.gmscore.downloads.standard;
-        
+
         actionButtonsHtml = `
           <div class="step-actions">
             <a href="${standardLink}" id="gmscore-download-link" class="btn btn-primary" download>
@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Step provides the patched app download
         // PREFERENCE: Prioritize Morphe -> ReVanced Extended -> ReVanced, using universal links where applicable
         const downloadUrl = resolveDownloadUrl(selectedAppKey, currentArch);
-        
+
         actionButtonsHtml = `
           <div class="step-actions">
             <a href="${downloadUrl}" id="app-download-link" class="btn btn-primary" download>
@@ -316,7 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const item = header.closest('.accordion-item');
       const content = item.querySelector('.accordion-content');
       const inner = item.querySelector('.accordion-content-inner');
-      
+
       const isActive = item.classList.contains('active');
 
       // Close other active accordions
@@ -342,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Resolve download URLs prioritizing Morphe -> ReVanced Extended -> ReVanced
   function resolveDownloadUrl(appKey, arch) {
     const baseReleaseUrl = 'https://github.com/FiorenMas/Revanced-And-Revanced-Extended-Non-Root/releases/download/all/';
-    
+
     // 1. YouTube
     if (appKey === 'youtube') {
       const variants = ['morphe', 'revanced-extended', 'revanced'];
@@ -356,7 +356,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     }
-    
+
     // 2. YouTube Music
     if (appKey === 'youtube_music') {
       const variants = ['morphe', 'revanced-extended', 'revanced'];
@@ -369,13 +369,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     }
-    
+
     // 3. Fallback for other apps (TikTok, Instagram, etc.)
     const appData = TRANSLATIONS.apps[appKey];
     if (appData && appData.downloads) {
       return appData.downloads.universal || appData.downloads[arch] || appData.downloads.arm64;
     }
-    
+
     return '';
   }
 });
