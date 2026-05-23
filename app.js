@@ -249,8 +249,8 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       } else if (step.isAppDownloadStep) {
         // Step provides the patched app download
-        // PREFERENCE: Use universal links first when available, fall back to detected architectures
-        const downloadUrl = appData.downloads.universal || appData.downloads[currentArch] || appData.downloads.arm64;
+        // PREFERENCE: Prioritize Morphe -> ReVanced Extended -> ReVanced, using universal links where applicable
+        const downloadUrl = resolveDownloadUrl(selectedAppKey, currentArch);
         
         actionButtonsHtml = `
           <div class="step-actions">
@@ -337,5 +337,45 @@ document.addEventListener('DOMContentLoaded', () => {
         content.style.maxHeight = `${inner.scrollHeight}px`;
       }
     });
+  }
+
+  // Resolve download URLs prioritizing Morphe -> ReVanced Extended -> ReVanced
+  function resolveDownloadUrl(appKey, arch) {
+    const baseReleaseUrl = 'https://github.com/FiorenMas/Revanced-And-Revanced-Extended-Non-Root/releases/download/all/';
+    
+    // 1. YouTube
+    if (appKey === 'youtube') {
+      const variants = ['morphe', 'revanced-extended', 'revanced'];
+      for (const variant of variants) {
+        if (arch === 'universal') {
+          return `${baseReleaseUrl}youtube-${variant}.apk`;
+        } else if (arch === 'arm64') {
+          return `${baseReleaseUrl}youtube-arm64-v8a-${variant}.apk`;
+        } else if (arch === 'arm32') {
+          return `${baseReleaseUrl}youtube-armeabi-v7a-${variant}.apk`;
+        }
+      }
+    }
+    
+    // 2. YouTube Music
+    if (appKey === 'youtube_music') {
+      const variants = ['morphe', 'revanced-extended', 'revanced'];
+      for (const variant of variants) {
+        // No universal/archless file exists for music, so map universal & arm64 to arm64
+        if (arch === 'universal' || arch === 'arm64') {
+          return `${baseReleaseUrl}youtube-music-arm64-v8a-${variant}.apk`;
+        } else if (arch === 'arm32') {
+          return `${baseReleaseUrl}youtube-music-armeabi-v7a-${variant}.apk`;
+        }
+      }
+    }
+    
+    // 3. Fallback for other apps (TikTok, Instagram, etc.)
+    const appData = TRANSLATIONS.apps[appKey];
+    if (appData && appData.downloads) {
+      return appData.downloads.universal || appData.downloads[arch] || appData.downloads.arm64;
+    }
+    
+    return '';
   }
 });
