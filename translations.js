@@ -66,7 +66,8 @@ const TRANSLATIONS = {
           isGmsCoreStep: true,
           screenshotText: 'Downloading GmsCore file...',
           screenshots: [
-            'assets/screenshots/microdl.png'
+            'assets/screenshots/microdl.png',
+            'assets/screenshots/microopen.png'
           ]
         },
         {
@@ -74,7 +75,8 @@ const TRANSLATIONS = {
           description: 'When you tap to open the downloaded GmsCore file, your browser will block it and show a security prompt. Tap "Settings" on that prompt, and switch on the toggle to allow installations from your browser.',
           screenshotText: 'Allow from this source toggle screen',
           screenshots: [
-            'assets/screenshots/microsettings.png'
+            'assets/screenshots/microsettings.png',
+            'assets/screenshots/microunknown.png'
           ]
         },
         {
@@ -82,7 +84,6 @@ const TRANSLATIONS = {
           description: 'Your phone might show a Play Protect popup warning you about an "Unknown developer" or "Unsafe app". This is normal for patched files. Tap "More details" or "Details" on the popup, then select "Install anyway" to proceed.',
           screenshotText: 'Play Protect -> More details -> Install anyway',
           screenshots: [
-            'assets/screenshots/microunknown.png',
             'assets/screenshots/microdetail.png',
             'assets/screenshots/microanyway.png'
           ]
@@ -92,8 +93,7 @@ const TRANSLATIONS = {
           description: 'Now, tap "Install" on the screen to complete the setup. Once installed, GmsCore runs silently in the background — you do not need to open it.',
           screenshotText: 'GmsCore installation success',
           screenshots: [
-            'assets/screenshots/microinstall.png',
-            'assets/screenshots/microopen.png'
+            'assets/screenshots/microinstall.png'
           ]
         },
         {
@@ -110,7 +110,7 @@ const TRANSLATIONS = {
           description: 'Open the downloaded YouTube ReVanced APK file and tap "Install". Since you already enabled permissions in Step 2, the app will install instantly.',
           screenshotText: 'YouTube ReVanced installation screen',
           screenshots: [
-            'assets/screenshots/ytcontinue.png',
+            'assets/screenshots/ytopen.png',
             'assets/screenshots/ytinstall.png'
           ]
         },
@@ -119,8 +119,11 @@ const TRANSLATIONS = {
           description: 'Launch the YouTube app and tap "Sign in" -> "Add Google Account". Log in with your standard credentials to sync your subscriptions. NOTE: If you are using a Huawei device, make sure to tap the "Huawei" button on the sign-in screen.',
           screenshotText: 'Account Login & Huawei button guide',
           screenshots: [
-            'assets/screenshots/ythuawei.png',
-            'assets/screenshots/ytopen.png'
+            'assets/screenshots/ytcontinue.png',
+            'assets/screenshots/ytallow.png',
+            'assets/screenshots/ytyou.png',
+            'assets/screenshots/ytsign.png',
+            'assets/screenshots/ythuawei.png'
           ]
         }
       ]
@@ -142,7 +145,8 @@ const TRANSLATIONS = {
           isGmsCoreStep: true,
           screenshotText: 'Downloading GmsCore file...',
           screenshots: [
-            'assets/screenshots/microdl.png'
+            'assets/screenshots/microdl.png',
+            'assets/screenshots/microopen.png'
           ]
         },
         {
@@ -150,7 +154,8 @@ const TRANSLATIONS = {
           description: 'If installing for the first time, when you open the file, tap "Settings" on the prompt and enable the toggle to allow installs from your browser.',
           screenshotText: 'Allow from this source toggle screen',
           screenshots: [
-            'assets/screenshots/microsettings.png'
+            'assets/screenshots/microsettings.png',
+            'assets/screenshots/microunknown.png'
           ]
         },
         {
@@ -158,7 +163,6 @@ const TRANSLATIONS = {
           description: 'If you see an "Unknown developer" alert, tap "More details" followed by "Install anyway". It is completely safe.',
           screenshotText: 'Play Protect -> More details -> Install anyway',
           screenshots: [
-            'assets/screenshots/microunknown.png',
             'assets/screenshots/microdetail.png',
             'assets/screenshots/microanyway.png'
           ]
@@ -168,8 +172,7 @@ const TRANSLATIONS = {
           description: 'Tap "Install" on the screen to finish setup. GmsCore will operate quietly in the background.',
           screenshotText: 'GmsCore installation success',
           screenshots: [
-            'assets/screenshots/microinstall.png',
-            'assets/screenshots/microopen.png'
+            'assets/screenshots/microinstall.png'
           ]
         },
         {
